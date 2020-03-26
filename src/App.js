@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Login from './Login'
+import Menu from './Menu'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends React.Component{
+   state = {
+     loginStatus: false
+   }
+
+  loginStatus = (status)=>{
+     this.setState({
+       loginStatus: status
+     })
+  }
+
+  render(){
+    let loginStatus = this.state.loginStatus
+    return(
+      <section>
+        <div>
+         {loginStatus ? <Menu />  :  <Login userLoggedIn = {this.loginStatus} />}
+       </div>
+       </section>
+    )
+  }
+
 }
-
-export default App;
